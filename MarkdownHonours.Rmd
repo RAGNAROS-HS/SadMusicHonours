@@ -1,47 +1,160 @@
 ---
-title: "Untitled"
+title: "The Data Science in Everyday Music Listening"
 output: 
   flexdashboard::flex_dashboard:
-    orientation: columns
     vertical_layout: fill
+
 ---
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
 ```
 
-Column {data-width=650}
------------------------------------------------------------------------
+About {data-orientation=columns}
+====================================================
 
-### Chart A
+Inputs {.sidebar}
+-------------------------------------
+links  referenced material?
 
-<!-- zrob tu grafikeee -->
 
-*krzywe*
-**pogrubione**
-lista:
-  -item1
-  -item2
-  
-link [widoczny tekst](www.google.com)
+```{r}
+```
 
+Column 
+-------------------------------------
+
+### Chart A1
+why we chose this subject matter
 
 ```{r}
 
 ```
 
-Column {data-width=350}
------------------------------------------------------------------------
-
-### Chart B
-
+### Chart A2
+our raw data in a table
 ```{r}
 
 ```
 
-### Chart C
+
+Column 
+-------------------------------------
+
+### Chart A3
+what we aim to find
 
 ```{r}
 
 ```
+ 
+Methodology {data-orientation=rows}
+=============================================
+
+Row {data-height=650}{.tabset}
+-------------------------------------
+
+### General information 
+consent explained
+
+```{r} 
+```
+### GOLD MSI
+Musical sophistication check explained
+```{r}
+```
+### 2 Variable Emotion
+emotion check explained
+```{r} 
+```
+
+### Attention
+  attention check explained
+```{r} 
+```
+
+Row {data-height=350}
+-------------------------------------
+   
+### Expected Chart before
+
+```{r}
+library(ggplot2)
+sample(1:70, 100, replace = T)-> valence
+sample(1:70, 100, replace = T) -> energy
+ggplot(data = NULL, aes(x = valence, y = energy)) +
+  geom_point()
+```   
+    
+### Expected Chart after
+
+```{r}
+library(ggplot2)
+sample(1:70, 100, replace = T)-> valence
+sample(1:70, 100, replace = T) -> energy
+ggplot(data = NULL, aes(x = valence - 10, y = energy - 10)) +
+  geom_point()
+```
+
+
+
+Results {data-orientation=rows}
+=============================================
+
+Row
+-------------------------------------
+    
+### before
+    
+```{r}
+library(ggplot2)
+sample(1:70, 100, replace = T)-> valence
+sample(1:70, 100, replace = T) -> energy
+ggplot(data = NULL, aes(x = valence - 10, y = energy - 10)) +
+  geom_point()
+```
+    
+### after
+
+```{r}
+library(ggplot2)
+sample(1:70, 100, replace = T)-> valence
+sample(1:70, 100, replace = T) -> energy
+ggplot(data = NULL, aes(x = valence - 10, y = energy - 10)) +
+  geom_point()
+```
+
+
+
+
+Row
+-------------------------------------
+    
+### age distribution
+    
+```{r}
+```
+ 
+### Country distribution
+    
+```{r}
+slices <- c(10, 12, 4, 16, 8)
+
+lbls <- c("US", "UK", "Australia", "Germany", "France")
+pct <- round(slices/sum(slices)*100)
+lbls <- paste(lbls, pct)
+# add percents to labels
+lbls <- paste(lbls,"%",sep="") # ad % to labels
+pie(slices,labels = lbls, col=rainbow(length(lbls)),
+   main="Pie Chart of Countries")
+``` 
+
+### sophistication to change in mood?
+    
+```{r}
+  sophistication <- c(1,2,3,5,5,6,6,6,7,8,8,9,9,10,11,12,12,14,15,15,15,15,16,17,19,20,21,21,22,22,23,24,24,24,25,25,25,26,27,27,29,29,30,30,32,32,33,33,34,35,35,35,36,36,36,36,37,37,38,38,39,40,41,42,43,44,45,45,48,50,50,52,54,54,55,55,55,55,56,56,57,57,59,59,60,61,62,62,63,63,64,64,64,65,65,66,67,68,68,70)
+  distance <- c(1,1,2,3,5,6,7,7,8,8,8,9,10,12,12,13,13,13,14,14,15,15,15,16,16,19,19,19,19,21,21,21,22,24,25,25,25,25,27,27,27,28,28,28,29,29,30,31,31,32,32,33,33,33,34,37,37,38,41,42,43,45,46,46,48,48,48,49,49,50,50,52,52,53,54,54,55,56,57,57,57,58,58,59,59,60,60,60,61,62,64,64,64,65,66,66,66,66,68,70)
+  ggplot(data = NULL, aes(x = valence - sophistication, y = distance)) +
+  geom_point()
+``` 
 
